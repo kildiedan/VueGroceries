@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript dobbelstenen.</title>
+</head>
+<body>
+    <div id="dice">
+        <button v-on:click="trow">Gooi!</button>
+        <table>
+            <th>getal</th>
+            <th>aantal</th>
+            <tr v-for="dice in diceCounts">
+                <td v-text="dice.number"></td>
+                <td v-text="dice.count"></td>
+            </tr>
+            
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+
+        new Vue({
+            el: '#dice',
+            data: {
+
+                diceCounts: [
+                    {number: '1', count: 0},
+                    {number: '2', count: 0},
+                    {number: '3', count: 0},
+                    {number: '4', count: 0},
+                    {number: '5', count: 0},
+                    {number: '6', count: 0}
+                ]
+
+            },
+
+            methods: {
+                trow() {
+                    
+                    for(let i=0; i<6; i++){
+                        this.diceCounts[i].count = 0;
+                       
+                    };
+
+                    for(let i=0; i<8; i++){
+                        let worp = Math.floor(Math.random()*6);
+
+                        this.diceCounts[worp].count ++;
+                    }
+
+                }
+
+            },
+        
+        })
+
+        
+
+
+        
+    </script>
+</body>
+</html>

@@ -7,34 +7,13 @@ import { ref } from "vue";
 </script>
 
 <template>
-  <div id="app">
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <ul>
+    <li><router-link to="/">Home</router-link></li>
+    <li><router-link to="/create">Create</router-link></li>
+    <li><router-link to="/edit">Edit</router-link></li>
+  </ul>
 
-  <table>
-    <tr>
-      <th>name</th>
-      <th>price</th>
-      <th>amount</th>
-      <th>totale</th>
-    </tr>
-    <GroceriesTable
-      v-for="product in products"
-      :name="product.name"
-      :price="product.price"
-      :amount="product.amount"
-    />
-    <tr>
-      <td colspan="3">grand total</td>
-      <td>8</td>
-    </tr>
-  </table>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -52,7 +31,6 @@ export default {
           name: "cheesecake",
           price: 4.2,
           amount: 2,
-          total: 4,
         },
         {
           name: "water",

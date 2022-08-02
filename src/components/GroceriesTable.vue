@@ -12,7 +12,7 @@ defineProps({
   <tr>
     <td>{{ name }}</td>
     <td>{{ price }}</td>
-    <td><input type="number" v-model="amount" /></td>
+    <td>{{ amount }}</td>
     <td>{{ Math.round(price * amount * 100) / 100 }}</td>
   </tr>
 </template>
