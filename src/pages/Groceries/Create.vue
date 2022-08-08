@@ -12,23 +12,14 @@
 
 <script>
 import { useGroceriesStore } from "../../store/Groceries.js";
-import { mapState, mapActions, mapStores } from "pinia";
+import { ref } from "vue";
 export default {
-  components: {},
+  setup() {
+    const store = useGroceriesStore();
+    const { addGrocery } = store;
+    const grocery = ref({ name: "", price: 0, amount: 0 });
 
-  computed: {},
-  mounted() {},
-  data() {
-    return {
-      grocery: {
-        name: "",
-        price: 0,
-        amount: 0,
-      },
-    };
-  },
-  methods: {
-    ...mapActions(useGroceriesStore, ["addGrocery"]),
+    return { grocery, addGrocery };
   },
 };
 </script>

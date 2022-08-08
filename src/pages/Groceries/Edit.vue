@@ -7,7 +7,7 @@
       <th>amount</th>
       <th>delete</th>
     </tr>
-    <tr v-for="(product, index) in this.groceries" :key="product.id">
+    <tr v-for="(product, index) in groceries" :key="product.id">
       <td><input type="string" v-model="product.name" /></td>
       <td><input type="number" v-model="product.price" /></td>
       <td><input type="number" v-model="product.amount" /></td>
@@ -17,20 +17,15 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapStores } from "pinia";
 import { useGroceriesStore } from "../../store/Groceries.js";
+import { storeToRefs } from "pinia";
 export default {
-  components: {},
+  setup() {
+    const store = useGroceriesStore();
+    const { groceries } = storeToRefs(store);
+    const { deleteGrocery } = store;
 
-  computed: {
-    ...mapState(useGroceriesStore, { groceries: "groceries" }),
-  },
-  methods: {
-    ...mapActions(useGroceriesStore, ["deleteGrocery"]),
-  },
-  mounted() {},
-  data() {
-    return {};
+    return { groceries, deleteGrocery };
   },
 };
 </script>

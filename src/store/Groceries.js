@@ -16,6 +16,7 @@ export const useGroceriesStore = defineStore('groceries-store', {
         amount: 7,
       },],
     nextId: 3,
+    total: 0,
   }),
   
   getters: {
@@ -29,6 +30,13 @@ export const useGroceriesStore = defineStore('groceries-store', {
     },
     deleteGrocery(index){
       this.groceries.splice(index, 1)
+    },
+    grandTotal() {
+      this.total = 0;
+      for (let i = 0; i < this.groceries.length; i++) {
+        this.total +=
+          Math.round(this.groceries[i].price * this.groceries[i].amount * 100) / 100;
+      }
     },
   },
 
