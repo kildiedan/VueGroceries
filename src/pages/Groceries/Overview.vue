@@ -19,7 +19,7 @@ import { useGroceriesStore } from "../../store/Groceries.js";
     />
     <tr>
       <td colspan="3">grand total</td>
-      <td>14</td>
+      <td>{{ total }}</td>
     </tr>
   </table>
 </template>
@@ -32,10 +32,21 @@ export default {
   computed: {
     ...mapState(useGroceriesStore, { groceries: "groceries" }),
   },
-  methods: {},
-  mounted() {},
   data() {
-    return {};
+    return { total: 0 };
+  },
+  methods: {
+    grandTotal() {
+      this.total = 0;
+      for (let i = 0; i < this.groceries.length; i++) {
+        this.total +=
+          Math.round(this.groceries[i].price * this.groceries[i].amount * 100) /
+          100;
+      }
+    },
+  },
+  mounted() {
+    this.grandTotal();
   },
 };
 </script>

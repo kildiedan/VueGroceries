@@ -5,11 +5,13 @@
       <th>name</th>
       <th>price</th>
       <th>amount</th>
+      <th>delete</th>
     </tr>
-    <tr v-for="product in this.groceries">
+    <tr v-for="(product, index) in this.groceries" :key="product.id">
       <td><input type="string" v-model="product.name" /></td>
       <td><input type="number" v-model="product.price" /></td>
       <td><input type="number" v-model="product.amount" /></td>
+      <td><button @click="deleteGrocery(index)">delete</button></td>
     </tr>
   </table>
 </template>
@@ -23,10 +25,12 @@ export default {
   computed: {
     ...mapState(useGroceriesStore, { groceries: "groceries" }),
   },
+  methods: {
+    ...mapActions(useGroceriesStore, ["deleteGrocery"]),
+  },
   mounted() {},
   data() {
     return {};
   },
-  methods: {},
 };
 </script>
