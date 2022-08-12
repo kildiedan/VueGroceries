@@ -31,7 +31,9 @@ export const useGroceriesStore = defineStore('groceries-store', {
     deleteGrocery(index){
       this.groceries.splice(index, 1)
     },
+    // TODO: maak een getter van grandTotal, want er zijn geen async acties nodig en grandtotal leent zich daarom meer voor een getter (je wijzigt geen state)
     grandTotal() {
+      // TODO: vervang onderstaande loop voor een array.reduce waarvan je het resultaat direct returned (scheelt weer een paar regels code)
       this.total = 0;
       for (let i = 0; i < this.groceries.length; i++) {
         this.total +=

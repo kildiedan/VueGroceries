@@ -1,3 +1,4 @@
+<!-- TODO: na het toevoegen van een nieuw product moet er een router redirect naar de boodschappen overzichtspagina plaatsvinden -->
 <script setup></script>
 
 <template>

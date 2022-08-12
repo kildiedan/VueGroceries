@@ -1,3 +1,4 @@
+<!-- TODO: maak de edit pagina zo dat er slechts 1 boodschap per keer bewerkt kan worden. Stop de delete knop in de overzichtspagina -->
 <script setup></script>
 <template>
   <table>
