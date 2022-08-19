@@ -1,32 +1,24 @@
-<!-- TODO: maak de edit pagina zo dat er slechts 1 boodschap per keer bewerkt kan worden. Stop de delete knop in de overzichtspagina -->
-<script setup></script>
 <template>
   <table>
     <tr>
       <th>name</th>
       <th>price</th>
       <th>amount</th>
-      <th>delete</th>
     </tr>
-    <tr v-for="(product, index) in groceries" :key="product.id">
-      <td><input type="string" v-model="product.name" /></td>
-      <td><input type="number" v-model="product.price" /></td>
-      <td><input type="number" v-model="product.amount" /></td>
-      <td><button @click="deleteGrocery(index)">delete</button></td>
-    </tr>
+    <edit-component
+      :key="groceries[$route.params.index].id"
+      :name="groceries[$route.params.index].name"
+      :price="groceries[$route.params.index].price"
+      :amount="groceries[$route.params.index].amount"
+    />
   </table>
 </template>
 
-<script>
+<script setup>
 import { useGroceriesStore } from "../../store/Groceries.js";
 import { storeToRefs } from "pinia";
-export default {
-  setup() {
-    const store = useGroceriesStore();
-    const { groceries } = storeToRefs(store);
-    const { deleteGrocery } = store;
+import EditComponent from "../../components/EditComponent.vue";
 
-    return { groceries, deleteGrocery };
-  },
-};
+const store = useGroceriesStore();
+const { groceries } = storeToRefs(store);
 </script>

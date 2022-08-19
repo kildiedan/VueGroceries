@@ -16,30 +16,21 @@ export const useGroceriesStore = defineStore('groceries-store', {
         amount: 7,
       },],
     nextId: 3,
-    total: 0,
   }),
   
   getters: {
-    products(state) {
-      return state.groceries;
-    },
+    grandTotal: (state) => {
+      return state.groceries.reduce(function(total, currentValue) {
+        return total + (Math.round(currentValue.price * currentValue.amount * 100) / 100)
+      }, 0);
+   },
 },
   actions: {
     addGrocery(payload) {
-      this.groceries.push({ name: payload.name, id: this.nextId++, price: payload.price, amount: payload.amount })
+      this.groceries.push({ name: payload.name, id: this.nextId++, price: payload.price, amount: payload.amount });
     },
     deleteGrocery(index){
       this.groceries.splice(index, 1)
     },
-    // TODO: maak een getter van grandTotal, want er zijn geen async acties nodig en grandtotal leent zich daarom meer voor een getter (je wijzigt geen state)
-    grandTotal() {
-      // TODO: vervang onderstaande loop voor een array.reduce waarvan je het resultaat direct returned (scheelt weer een paar regels code)
-      this.total = 0;
-      for (let i = 0; i < this.groceries.length; i++) {
-        this.total +=
-          Math.round(this.groceries[i].price * this.groceries[i].amount * 100) / 100;
-      }
-    },
   },
-
 })

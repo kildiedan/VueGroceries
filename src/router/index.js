@@ -5,9 +5,9 @@ import Create from '../pages/Groceries/Create.vue'
 
 
 const routes = [
-  { path: '/', component: Overview },
-  { path: '/edit', component: Edit },
-  { path: '/create', component: Create },
+  { path: '/', name: 'home', component: Overview },
+  { path: '/edit/:index', name: 'edit', component: Edit },
+  { path: '/create', name: 'create', component: Create },
 ]
 
 export default function (history) {

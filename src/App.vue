@@ -10,39 +10,12 @@ import { ref } from "vue";
   <ul>
     <li><router-link to="/">Home</router-link></li>
     <li><router-link to="/create">Create</router-link></li>
-    <li><router-link to="/edit">Edit</router-link></li>
   </ul>
 
   <router-view></router-view>
 </template>
 
-<script>
-export default {
-  components: {
-    HelloWorld,
-  },
-
-  computed: {},
-  mounted() {},
-  data() {
-    return {
-      products: [
-        {
-          name: "cheesecake",
-          price: 4.2,
-          amount: 2,
-        },
-        {
-          name: "water",
-          price: 0.8,
-          amount: 7,
-        },
-      ],
-    };
-  },
-  methods: {},
-};
-</script>
+<script></script>
 
 <style scoped>
 .logo {
